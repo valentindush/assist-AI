@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../components/chat/header'
 import RecentChats from '../components/chat/recentChats'
-import { messages, recentMessages } from '../data'
+import { Message, dummyMessages, dummyRecentMessages } from '../data'
 import ChatContainer from '../components/chat/chatContainer'
 
+
+
 const Chat = () => {
+
+  const [messages, setMessages] = React.useState<Message[]>(dummyMessages)
+
   return (
     <div className='flex md:block'>
         <div className="w-full relative ">
             <Header />
-            <ChatContainer messages={messages} />
+            <ChatContainer setMessages={setMessages} messages={messages} />
         </div>
         <div className="">
-            <RecentChats chats={recentMessages} />
+            <RecentChats chats={dummyRecentMessages} />
         </div>
     </div>
   )

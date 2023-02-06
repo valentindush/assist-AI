@@ -1,4 +1,4 @@
-export const recentMessages:string[] = [
+export const dummyRecentMessages:string[] = [
     'lorem ipsum dolor sit ametconsectetur adipiscing elit',
     'sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam',
     'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
@@ -12,7 +12,7 @@ export interface Message {
     receiver: string,
 }
 
-export const messages: Message[] = [
+export const dummyMessages: Message[] = [
     {
         text: 'lorem ipsum dolor sit ametconsectetur adipiscing elit',
         date: new Date(),

@@ -10,7 +10,7 @@ const Msg = ({msg}: {msg: Message}) => {
             {msg.text}
             
         </div>
-        <div className={`absolute text-gray-500 -bottom-4 text-xs ${msg.sender !== "assistant"?"right-0":""}`}>
+        <div className={`absolute min-w-[50px] text-gray-500 -bottom-4 text-xs ${msg.sender !== "assistant"?"right-0":""}`}>
             {`${msg.date.getHours()}:${msg.date.getMinutes()} ${msg.date.getHours() > 12 ? "PM" : "AM"}`}
         </div>
         {msg.sender === "assistant" && <button className='absolute right-3 top-[30%]'>

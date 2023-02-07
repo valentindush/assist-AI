@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaAngleDown, FaEdit, FaRecycle } from 'react-icons/fa'
 
-const RecentChat = ({msg}: {msg: string}) => {
+const RecentChat = ({msg, deleteFunc,id} : {msg: string, deleteFunc:Function, id:number}) => {
 
     const [showMenu, setShowMenu] = React.useState(false)
 
@@ -17,7 +17,7 @@ const RecentChat = ({msg}: {msg: string}) => {
                     <FaEdit />
                     <span>Edit title</span>
                 </button>
-                <button className="flex items-center gap-2 mt-4 ">
+                <button onClick={()=>deleteFunc(id)} className="flex items-center gap-2 mt-4 ">
                     <FaRecycle className='text-red-500' />
                     <span className='text-red-500'>Delte Chat</span>
                 </button>

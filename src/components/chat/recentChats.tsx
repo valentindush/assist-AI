@@ -1,9 +1,39 @@
 import RecentChat from './recentChat'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {TiMessages} from 'react-icons/ti'
 import {AiOutlineCloseCircle} from 'react-icons/ai'
-const RecentChats = ({chats}: {chats: string[]}) => {
+import { Message } from '../../data'
+const RecentChats = ({chats,setMessages}: {chats: string[], setMessages:Function}) => {
   const [show, setShow] = useState(false)
+
+  const [recentMessages, setRecenteMessages] = useState<string[]>([])
+
+  const handleDelete = (id: number)=>{
+    //Delete message from local storage
+    const msgs = JSON.parse(localStorage.getItem('messages') || '[]') as Message[]
+    const newMsgs = msgs.filter((msg, index)=>index !== id)
+    localStorage.setItem('messages', JSON.stringify(newMsgs))
+
+    //Delete message from recent messages
+    const newRecentMsgs = recentMessages.filter((msg, index)=>index !== id)
+    setRecenteMessages(newRecentMsgs)
+    
+    const msgsWithDate = msgs.map(msg=>{
+      return {...msg, date: new Date(msg.date)}
+    })
+
+    setMessages(msgsWithDate)
+  }
+
+  //Get recent messages from local storage
+
+  useEffect(()=>{
+    const msgs = JSON.parse(localStorage.getItem('messages') || '[]') as Message[]
+    //Get array of text messages from messages where sender is not bot
+    const recentMsgs = msgs.filter(msg=>msg.sender !== 'bot').map(msg=>msg.text).slice(0,5)
+    setRecenteMessages(recentMsgs)
+  }, [])
+
   return (
     <>
     <div className="hidden md:block absolute top-1 right-3">
@@ -15,9 +45,9 @@ const RecentChats = ({chats}: {chats: string[]}) => {
         <h2 className='text-xl font-bold text-gray-900'>Recent Chats</h2>
 
         <div className="mt-3">
-            {chats.map((msg, index)=>{
+            {recentMessages.map((msg, index)=>{
                 return (
-                    <RecentChat msg={msg} key={index} />
+                    <RecentChat id={index} deleteFunc={handleDelete} msg={msg} key={index} />
                 )
             })}
         </div>

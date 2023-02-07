@@ -4,6 +4,18 @@ import Msg from './message'
 import SendMsg from './sendMsg'
 
 
+//random replies
+
+const replyMsgs:Message[] = [
+  {text: "Hello, how are you?", sender: "assistant", receiver: "john doe", date: new Date(Date.now())},
+  {text: "I'm fine, thanks", sender: "assistant", receiver: "john doe", date: new Date(Date.now())},
+  {text: "Some random text, thanks", sender: "assistant", receiver: "john doe", date: new Date(Date.now())},
+  {text: "Hummmm", sender: "assistant", receiver: "john doe", date: new Date(Date.now())},
+  {text: "Me the assistant broo !", sender: "assistant", receiver: "john doe", date: new Date(Date.now())},
+  {text: "How can I help you today?", sender: "assistant", receiver: "john doe", date: new Date(Date.now())},
+]
+
+
 const ChatContainer = ({messages, setMessages}:{messages: Message[], setMessages:Function}) => {
 
   useEffect(()=>{
@@ -22,8 +34,7 @@ const ChatContainer = ({messages, setMessages}:{messages: Message[], setMessages
   },[])
 
   const handleSend = (msgText: string) => {
-    setMessages([...messages, {text: msgText, sender: "john doe", receiver: "bot", date:new Date(Date.now())}])
-
+    setMessages([...messages, {text: msgText, sender: "john doe", receiver: "bot", date:new Date(Date.now())}, replyMsgs[Math.floor(Math.random() * replyMsgs.length)]])
     //Use local storage to save messages
     localStorage.setItem('messages', JSON.stringify([...messages, {text: msgText, sender: "john doe", receiver: "bot", date:new Date(Date.now())}]))
   }

@@ -17,7 +17,7 @@ const Chat = () => {
             <ChatContainer setMessages={setMessages} messages={messages} />
         </div>
         <div className="">
-            <RecentChats chats={dummyRecentMessages} />
+            <RecentChats setMessages={setMessages} chats={dummyRecentMessages} />
         </div>
     </div>
   )

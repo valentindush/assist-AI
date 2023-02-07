@@ -1,4 +1,5 @@
 import React from 'react'
+import { AiOutlineDelete } from 'react-icons/ai'
 import { FaAngleDown, FaEdit, FaRecycle } from 'react-icons/fa'
 
 const RecentChat = ({msg, deleteFunc,id} : {msg: string, deleteFunc:Function, id:number}) => {
@@ -18,8 +19,8 @@ const RecentChat = ({msg, deleteFunc,id} : {msg: string, deleteFunc:Function, id
                     <span>Edit title</span>
                 </button>
                 <button onClick={()=>deleteFunc(id)} className="flex items-center gap-2 mt-4 ">
-                    <FaRecycle className='text-red-500' />
-                    <span className='text-red-500'>Delte Chat</span>
+                    <AiOutlineDelete className='text-red-500' />
+                    <span className='text-red-500'>Delete Chat</span>
                 </button>
             </div>}
 

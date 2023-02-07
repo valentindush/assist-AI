@@ -41,7 +41,7 @@ const RecentChats = ({chats,setMessages}: {chats: string[], setMessages:Function
         <TiMessages className='text-4xl text-gray-700' />
       </button>
     </div>
-    <div className={`min-w-[300px] bg-white ${show?"md:block":"md:hidden"} p-4 relative md:pt-5 md:absolute md:top-0 md:h-full md:bg-white md:bg-opacity-40 md:backdrop-blur-md`}>
+    <div className={`min-w-[300px] bg-white ${show?"md:block":"md:hidden"} md:w-full p-4 relative md:pt-5 md:absolute md:top-0 md:h-full md:bg-white md:bg-opacity-40 md:backdrop-blur-md`}>
         <h2 className='text-xl font-bold text-gray-900'>Recent Chats</h2>
 
         <div className="mt-3">
